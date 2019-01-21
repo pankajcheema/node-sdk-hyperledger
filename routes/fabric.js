@@ -6,7 +6,9 @@ var Fabric_CA_Client = require('fabric-ca-client');
 var path = require('path');
 var util = require('util');
 var os = require('os');
-
+setInterval(() => {
+    //console.log("hello: " + i++);    
+}, 1000);
 //
 var fabric_client = new Fabric_Client();
 var channel = fabric_client.newChannel('mychannel');
