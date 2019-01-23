@@ -6,13 +6,20 @@ var favricocntroller = require('./../controller/favricsetupcontroller');
 /* GET users listing. */
 router.get('/register-admin', function(req, res, next) {
     let fabriccore =new favricocntroller();
-    fabriccore.TestPromise()
+    returned_promis=fabriccore.TestPromise()
+    returned_promis.then(function (result){
+        console.log(result);
+    }).catch(function (eroor){
+        console.log(eroor);
+    })
     
 
     res.send('Admin registered successfully');
   
 
 });
+
+
 
 //register end enroll user here
 

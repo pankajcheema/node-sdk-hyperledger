@@ -74,6 +74,16 @@ class FabricCore {
 
     TestPromise(){
         console.log("promise");
+        return new Promise(function(resolve, reject) {
+            // Do async job
+            let a=1;   
+            if (a) {
+                       reject("true");
+                   } else {
+                       resolve("false");
+            }
+               
+        })
     }
 }
 
