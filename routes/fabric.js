@@ -6,7 +6,7 @@ var favricocntroller = require('./../controller/favricsetupcontroller');
 /* GET users listing. */
 router.get('/register-admin', function(req, res, next) {
     let fabriccore =new favricocntroller();
-    returned_promis=fabriccore.RegisterAdmin()
+/*     returned_promis=fabriccore.RegisterAdmin()
     returned_promis.then(function (result){
         console.log(result);
         res.status(200).json({"success":result,"sender":"pankaj"})
@@ -14,15 +14,19 @@ router.get('/register-admin', function(req, res, next) {
     }).catch(function (eroor){
         res.status(500).json({"error":eroor.message,"sender":"pankaj"})
         
-    })
+    }) */
+    fabriccore.TestPromise2(null);
+    
+
+    fabriccore.TestPromise1(null);
+    res.status(200).json({"success":1,"sender":"pankaj"})
+    
     
 
     
   
 
 });
-
-
 
 //register end enroll user here
 

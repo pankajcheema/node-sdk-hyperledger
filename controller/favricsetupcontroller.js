@@ -80,18 +80,25 @@ class FabricCore {
         
     }
 
-    TestPromise(){
+    TestPromise1(){
         console.log("promise");
-        return new Promise(function(resolve, reject) {
+        
             // Do async job
-            let a=1;   
-            if (a) {
-                       reject("true");
-                   } else {
-                       resolve("false");
+            for (var i=0; i< 10 ; i++){
+                console.log("TestPromise1  "+i)
             }
+            
                
-        })
+       
+    }
+
+    TestPromise2(){
+        console.log("promise");
+       
+            for (var i=0; i< 1000 ; i++){
+                console.log("TestPromise2  "+i)
+            }
+            
     }
 }
 
