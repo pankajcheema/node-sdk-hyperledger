@@ -28,12 +28,14 @@ router.get('/register-admin', function(req, res, next) {
 //register end enroll user here
 
 
-router.get('/register-user', function(req, res, next) {
-    returned_promis=fabriccore.RegisterUser()
+router.post('/register-user', function(req, res, next) {
+    
+    returned_promis=fabriccore.RegisterUser(req.body)
     returned_promis.then((data)=>{
         res.status(200).json({"key":"user_registered"})
     }).catch((err)=>{
-       res.status(500).json({"key":"something went wrong"})
+        //nullObject.someMethod();
+        res.status(500).json({"key":"something went wrong"})
     })
     
 });

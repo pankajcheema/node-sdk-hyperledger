@@ -81,7 +81,7 @@ class FabricCore {
     }
 //this function will be used for registering the normal user
 
-    RegisterUser(){
+    RegisterUser(newuser){
         return new Promise(function(resolve,reject){
             Fabric_Client.newDefaultKeyValueStore({ path: store_path
             }).then((state_store) => {
@@ -113,16 +113,16 @@ class FabricCore {
             
                 // at this point we should have the admin user
                 // first need to register the user with the CA server
-                return fabric_ca_client.register({enrollmentID: 'user1', affiliation: 'org1.department1',role: 'client'}, admin_user);
+                return fabric_ca_client.register({enrollmentSecret: newuser.secret, enrollmentID: newuser.user, affiliation: 'org1.department1',role: 'client'}, admin_user);
             }).then((secret) => {
                 // next we need to enroll the user with CA server
                 console.log('Successfully registered user1 - secret:'+ secret);
             
-                return fabric_ca_client.enroll({enrollmentID: 'user1', enrollmentSecret: secret});
+                return fabric_ca_client.enroll({enrollmentID: newuser.user, enrollmentSecret: secret});
             }).then((enrollment) => {
               console.log('Successfully enrolled member user "user1" ');
               return fabric_client.createUser(
-                 {username: 'user1',
+                 {username: newuser.user,
                  mspid: 'Org1MSP',
                  cryptoContent: { privateKeyPEM: enrollment.key.toBytes(), signedCertPEM: enrollment.certificate }
                  });
